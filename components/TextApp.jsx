@@ -43,12 +43,11 @@ const styles = StyleSheet.create({
         fontWeight: "medium"
     },
     title:{
-        marginVertical: 25,
+        marginVertical: 10,
         fontSize: 24,
         fontWeight: 'bold',
         color: colorText.primary, 
-        justifyContent: 'flex-start',
-        alignContent: 'flex-start,'
+        
     },
     subtitle:{
         fontSize: 7, 

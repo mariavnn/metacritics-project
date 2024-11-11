@@ -1,43 +1,24 @@
 import { View, TextInput, Text, Button, StyleSheet, TouchableOpacity} from 'react-native';
-import { Formik } from 'formik';
 import React from 'react'
 import colorText from '../constants/Text';
 import Colors from '../constants/Colors';
 
-export  function InputApp({ name, placeholder, secureTextEntry, validationSchema, initialValues, handleNavigation }) {
+export  function InputApp({name, placeholder, secureTextEntry, onChangeText, onBlur, value, error, touched }) {
     return (
-        <Formik
-          validationSchema={validationSchema}
-          initialValues={initialValues}
-        >
-          {({
-            handleChange,
-            handleSubmit,
-            handleBlur,
-            values,
-            errors,
-            touched,
-          }) => (
-            <>
-              <View style={styles.container}>
-                <TextInput
-                  style={styles.inputContainer}
-                  placeholder={placeholder}
-                  placeholderTextColor={colorText.standard}
-                  secureTextEntry={secureTextEntry}
-                  onChangeText={handleChange(name)}
-                  onBlur={handleBlur(name)}
-                  value={values[name]}
-                />
-    
-                {errors[name] && touched[name] && (
-                  <Text style={styles.errorText}>{errors[name]}</Text>
-                )}
-              </View>
-
-            </>
-          )}
-        </Formik>
+        <View style={styles.container}>
+          <TextInput
+            style={styles.inputContainer}
+            placeholder={placeholder}
+            placeholderTextColor={colorText.standard}
+            secureTextEntry={secureTextEntry}
+            onChangeText={onChangeText}
+            onBlur={onBlur}
+            value={value[name]}
+          />
+            {error[name] && touched[name] && (
+              <Text style={styles.errorText}>{error[name]}</Text>
+            )}
+        </View>
     );
 };
     

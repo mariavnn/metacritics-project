@@ -11,6 +11,7 @@ import colorText from '../../constants/Text';
 import Colors from '../../constants/Colors';
 import {  ButtonApp } from '../../components/Button';
 import { Link, router } from 'expo-router';
+import { Formik } from 'formik';
 
 export default function Login() {
 
@@ -35,21 +36,40 @@ export default function Login() {
           text={'Login'}
           type={'title'}
         />
-        <InputApp
-          key={'email'}
-          name="email"
-          placeholder="Email"
+        <Formik
+          initialValues={{email: '', password: ''}}
           validationSchema={loginValidationSchema}
-          initialValues={{ email: '' }}
-        />
-        <InputApp
-          key={'password'}
-          name="password"
-          placeholder="Password"
-          secureTextEntry={true}
-          validationSchema={loginValidationSchema}
-          initialValues={{ password: '' }}
-        />
+          onSubmit={values => {
+            // Aquí puedes manejar el envío de datos
+            console.log(values);
+          }}
+        >
+          {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
+            <>
+              <InputApp
+                key={'email'}
+                name="email"
+                placeholder="Email"
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+                value={values}
+                error={errors}
+                touched={touched}
+              />
+              <InputApp
+                key={'password'}
+                name="password"
+                placeholder="*********"
+                secureTextEntry={true}
+                onChangeText={handleChange('password')}
+                onBlur={handleBlur('password')}
+                value={values}
+                error={errors}
+                touched={touched}
+              />
+            </>
+          )}
+        </Formik>
 
         <TouchableOpacity style={styles.passwordContainer}>
           <Text style={styles.forgotPassword}>Forgot Password?</Text>
