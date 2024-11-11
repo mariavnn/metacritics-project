@@ -43,9 +43,10 @@ const styles = StyleSheet.create({
         fontWeight: "medium"
     },
     title:{
-       fontSize: 24,
-       fontWeight: 'bold',
-       color: colorText.primary, 
+        marginVertical: 25,
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: colorText.primary, 
     },
     subtitle:{
         fontSize: 7, 

@@ -6,6 +6,7 @@ const Colors = {
     yellowPrimary: '#FACA38',
     yellowSecondary: '#F0BE49',
     yellowTerciary: '#E2B836',
+    yellowQuarteary: '#926F20',
 
     greenPrimary: '#31CD42',
     greenSecondary: '#3E9A48',
