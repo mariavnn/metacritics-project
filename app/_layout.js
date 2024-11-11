@@ -2,11 +2,14 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import { Slot } from 'expo-router';
+import { Provider } from '../context/auth';
 
 export default function Layout() {
   return (
     <View style={styles.container}>
-      <Slot/>
+      <Provider>
+        <Slot />
+      </Provider>
     </View>
   )
 }

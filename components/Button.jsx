@@ -1,11 +1,12 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import colorText from '../constants/Text'
 import Colors from '../constants/Colors'
+import { Link } from 'expo-router'
 
-export function ButtonApp({text, onPress, type, icon}) {
+export function ButtonApp({text, href, type, icon}) {
 
     const getButtonStyles = () =>{
         switch(type){
@@ -19,27 +20,29 @@ export function ButtonApp({text, onPress, type, icon}) {
     }
 
     return (
-    <TouchableOpacity
-        onPress={onPress}
-        style={styles.container}
-    >
-        {type === 'primary' ? ( <LinearGradient
-            colors={[Colors.yellowSecondary, Colors.yellowQuarteary]}
-            style={[styles.button, getButtonStyles()]}
+    <Link href={`/${href}`} asChild>
+        <TouchableOpacity
+            style={styles.container}
         >
-            <View style={styles.content}>
-                {icon}
-                <Text style={styles.text}>{text}</Text>
-            </View>
-        </LinearGradient>):(
-            <View style={[styles.button, getButtonStyles()]}>
+            {type === 'primary' ? ( <LinearGradient
+                colors={[Colors.yellowSecondary, Colors.yellowQuarteary]}
+                style={[styles.button, getButtonStyles()]}
+            >
                 <View style={styles.content}>
                     {icon}
                     <Text style={styles.text}>{text}</Text>
                 </View>
-            </View>
-        )}
-    </TouchableOpacity>
+            </LinearGradient>):(
+                <View style={[styles.button, getButtonStyles()]}>
+                    <View style={styles.content}>
+                        {icon}
+                        <Text style={styles.text}>{text}</Text>
+                    </View>
+                </View>
+            )}
+        </TouchableOpacity>
+    </Link>
+   
   )
 }
 

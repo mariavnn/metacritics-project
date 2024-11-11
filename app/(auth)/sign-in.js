@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, Pressable } from 'react-native';
 import React from 'react'
 import * as yup from 'yup';
 import AntDesign from '@expo/vector-icons/AntDesign';
@@ -10,6 +10,7 @@ import { InputApp } from '../../components/InputApp';
 import colorText from '../../constants/Text';
 import Colors from '../../constants/Colors';
 import {  ButtonApp } from '../../components/Button';
+import { Link, router } from 'expo-router';
 
 export default function Login() {
 
@@ -48,25 +49,24 @@ export default function Login() {
           secureTextEntry={true}
           validationSchema={loginValidationSchema}
           initialValues={{ password: '' }}
-          //handleNavigation={() => navigation.navigate('Forget')}
         />
 
         <TouchableOpacity style={styles.passwordContainer}>
           <Text style={styles.forgotPassword}>Forgot Password?</Text>
         </TouchableOpacity>
-      
+
         <ButtonApp
           key={'LoginBtn'}
           text={'Login'}
           type={'primary'}
-          
+          href={'home'}
         />
 
         <View style={styles.signUpContainer} >
           <Text style={styles.subtitleText}> Don't have an account?</Text>
-          <TouchableOpacity >
-            <Text style={styles.signUpLink}>Sign Up</Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => router.replace('/sign-up')}>
+              <Text style={styles.signUpLink}>Sign Up</Text>
+            </TouchableOpacity>
         </View>
 
         <Text style={styles.subtitleText}>Login Using</Text>
