@@ -6,7 +6,7 @@ import { AnimatedGameCard } from "../components/GameCard";
 import { getLatestGames } from "../lib/metacritic";
 
 
-export default function Home() {
+export default function Main() {
   const [games, setGames] = useState([]);
 
   // useEffect(() => {

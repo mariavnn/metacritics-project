@@ -72,7 +72,7 @@ export default function Register() {
               <InputApp
                 key={'password'}
                 name="password"
-                placeholder="*********"
+                placeholder="Password"
                 secureTextEntry={true}
                 onChangeText={handleChange('password')}
                 onBlur={handleBlur('password')}
@@ -83,7 +83,7 @@ export default function Register() {
                <InputApp
                 key={'confirmPassword'}
                 name="confirmPassword"
-                placeholder="*********"
+                placeholder="Confirm Password"
                 secureTextEntry={true}
                 onChangeText={handleChange('confirmPassword')}
                 onBlur={handleBlur('confirmPassword')}

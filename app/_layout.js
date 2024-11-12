@@ -1,16 +1,17 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { StyleSheet } from 'react-native'
-import { Slot } from 'expo-router';
+import { Slot, Stack } from 'expo-router';
 import { Provider } from '../context/auth';
 
 export default function Layout() {
   return (
-    <View style={styles.container}>
-      <Provider>
-        <Slot />
-      </Provider>
-    </View>
+    <Stack>
+      <Stack.Screen
+        name='index'
+        options={{headerShown: false, title: 'Welcome', headerBackground:'#000'}}
+      />
+    </Stack>
   )
 }
 

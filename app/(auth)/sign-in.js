@@ -31,45 +31,45 @@ export default function Login() {
     <Screen>
       <View style={styles.container}>
         <Logo/>
-        <TextApp 
-          key={'Login'}
-          text={'Login'}
-          type={'title'}
-        />
-        <Formik
-          initialValues={{email: '', password: ''}}
-          validationSchema={loginValidationSchema}
-          onSubmit={values => {
-            // Aquí puedes manejar el envío de datos
-            console.log(values);
-          }}
-        >
-          {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
-            <>
-              <InputApp
-                key={'email'}
-                name="email"
-                placeholder="Email"
-                onChangeText={handleChange('email')}
-                onBlur={handleBlur('email')}
-                value={values}
-                error={errors}
-                touched={touched}
-              />
-              <InputApp
-                key={'password'}
-                name="password"
-                placeholder="*********"
-                secureTextEntry={true}
-                onChangeText={handleChange('password')}
-                onBlur={handleBlur('password')}
-                value={values}
-                error={errors}
-                touched={touched}
-              />
-            </>
-          )}
-        </Formik>
+    
+        <Text style={styles.title}>Login</Text>
+        
+        <View style={styles.inputContainer}>
+          <Formik
+            initialValues={{email: '', password: ''}}
+            validationSchema={loginValidationSchema}
+            onSubmit={values => {
+              // Aquí puedes manejar el envío de datos
+              console.log(values);
+            }}
+          >
+            {({handleChange, handleBlur, handleSubmit, values, errors, touched}) => (
+              <>
+                <InputApp
+                  key={'email'}
+                  name="email"
+                  placeholder="Email"
+                  onChangeText={handleChange('email')}
+                  onBlur={handleBlur('email')}
+                  value={values}
+                  error={errors}
+                  touched={touched}
+                />
+                <InputApp
+                  key={'password'}
+                  name="password"
+                  placeholder="*********"
+                  secureTextEntry={true}
+                  onChangeText={handleChange('password')}
+                  onBlur={handleBlur('password')}
+                  value={values}
+                  error={errors}
+                  touched={touched}
+                />
+              </>
+            )}
+          </Formik>
+        </View>
 
         <TouchableOpacity style={styles.passwordContainer}>
           <Text style={styles.forgotPassword}>Forgot Password?</Text>
@@ -81,13 +81,6 @@ export default function Login() {
           type={'primary'}
           href={'home'}
         />
-
-        <View style={styles.signUpContainer} >
-          <Text style={styles.subtitleText}> Don't have an account?</Text>
-            <TouchableOpacity onPress={() => router.replace('/sign-up')}>
-              <Text style={styles.signUpLink}>Sign Up</Text>
-            </TouchableOpacity>
-        </View>
 
         <Text style={styles.subtitleText}>Login Using</Text>
 
@@ -119,37 +112,41 @@ export default function Login() {
 
 const styles = StyleSheet.create({
     title:{
-      marginBottom: 10,
+      width: '100%',
+      justifyContent:'flex-start',
+      color: colorText.primary,
+      fontSize: 24,
+      marginLeft: 40,
+      marginTop: 40,
+      marginBottom: 8,
+      fontWeight: 'bold',
     },
     container:{
       flex:1, 
       justifyContent: 'center',
       alignItems: 'center',
+      paddingVertical: 20,
+      
+    },
+    inputContainer:{
+      width: '100%',
     },
     passwordContainer: {
-      height: 20,
       alignSelf: 'flex-end',
       marginRight: 20,
+      marginBottom:30,
+      
     },
     forgotPassword: {
       color: colorText.primary,
       fontSize: 12,
     },
-    signUpContainer: {
-      marginTop: 30,
-      marginBottom: 40,
-      alignItems: 'center',
-      flexDirection: 'row', 
-      gap: 5,
-    },
     subtitleText: {
-      color: colorText.primary
-    },
-    signUpLink:{
-      color: Colors.yellowSecondary
+      color: colorText.primary,
+      marginTop:40,
+      marginBottom: 4,
     },
     buttonContainer:{
-      marginTop: 8,
       flexDirection: 'row',
       width: "100%",
     },
